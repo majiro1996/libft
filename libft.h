@@ -6,15 +6,22 @@
 /*   By: manujime <manujime@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:31:59 by manujime          #+#    #+#             */
-/*   Updated: 2022/10/12 14:22:51 by manujime         ###   ########.fr       */
+/*   Updated: 2023/03/30 14:54:03 by manujime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include<stdlib.h>
-# include<unistd.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
+# include <stdarg.h>
+# include <fcntl.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 typedef struct s_list
 {
@@ -68,4 +75,26 @@ t_list				*ft_lstlast(t_list *lst);
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *), void
 						(*del)(void *));
 int					ft_lstsize(t_list *lst);
+//printf
+int					ft_printf(const char *string, ...);
+int					ft_printchar(int c);
+int					ft_printstr(char *str);
+int					ft_printnbr(int nbr);
+int					ft_printptr(void *ptr);
+int					ft_printhex(unsigned long nbr, char f);
+int					ft_printuns(unsigned int nbr);
+//get_next_line
+char				*get_next_line(int fd);
+char				*ft_strchr_gnl(const char *s, int c);
+void				*ft_calloc_gnl(size_t count, size_t size);
+int					ft_strlen_gnl(const char *s);
+char				*ft_strjoin_gnl(char *s1, char *s2);
+//push
+long int			ft_atol(const char *str);
+int					ft_abs(int nbr);
+void				ft_putstr(char *str);
+int					ft_strcmp(const char *s1, const char *s2);
+void				ft_swap(int *a, int *b);
+void				ft_free_char_matrix(char **arr);
+
 #endif

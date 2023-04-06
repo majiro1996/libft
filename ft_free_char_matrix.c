@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_free_char_matrix.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: manujime <manujime@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 12:51:54 by manujime          #+#    #+#             */
-/*   Updated: 2023/03/27 23:12:15 by manujime         ###   ########.fr       */
+/*   Created: 2023/03/30 14:49:23 by manujime          #+#    #+#             */
+/*   Updated: 2023/03/30 14:53:39 by manujime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-/*Envía la string ’s’ al file descriptor
-especificado.*/
-void	ft_putstr_fd(char *s, int fd)
+#include"libft.h"
+//frees all memory of a char ** 
+void	ft_free_char_matrix(char **arr)
 {
-	int	c;
+	char	**current;
 
-	c = 0;
-	while (s[c] != '\0')
+	if (arr == NULL)
+		return ;
+	current = arr;
+	while (*current)
 	{
-		write(fd, &s[c], 1);
-		c++;
+		free(*current);
+		current++;
 	}
-}
-
-void	ft_putstr(char *str)
-{
-	int	c;
-
-	c = 0;
-	while (str[c])
-	{
-		write(1, &str[c], 1);
-		c++;
-	}
+	free(arr);
 }

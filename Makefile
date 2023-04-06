@@ -6,7 +6,7 @@
 #    By: manujime <manujime@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 12:18:06 by manujime          #+#    #+#              #
-#    Updated: 2022/10/12 14:21:45 by manujime         ###   ########.fr        #
+#    Updated: 2023/03/30 14:54:39 by manujime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,9 +62,20 @@ BONUS	=	ft_lstadd_back_bonus.c \
 			ft_lstlast_bonus.c \
 			ft_lstsize_bonus.c \
 
+EXTRA	=	ft_printf_nbr_ptr.c \
+			ft_printf.c \
+			get_next_line_bonus.c \
+			get_next_line_utils_bonus.c \
+			ft_atol.c \
+			ft_abs.c \
+			ft_swap.c \
+			ft_free_char_matrix.c \
+			
 OBJ		= 	$(SRC:.c=.o)
 
 OBONUS 	= 	$(BONUS:.c=.o)
+
+OBEXTRA = $(EXTRA:.c=.o)
 
 .c.o:
 	@$(CC) $(CCFLAGS) -c $< -o $(<:.c=.o)
@@ -77,12 +88,15 @@ $(NAME): 	$(OBJ)
 bonus: 		$(OBJ) $(OBONUS)
 			$(LIB) $(NAME) $(OBJ) $(OBONUS)
 
+extra:		$(OBJ) $(OBONUS) $(OBEXTRA)
+			$(LIB) $(NAME) $(OBJ) $(OBONUS) $(OBEXTRA)
+
 clean:
-			rm -f $(OBJ) $(OBONUS)
+			rm -f $(OBJ) $(OBONUS) $(OBEXTRA)
 
 fclean: 	clean
 			rm -f $(NAME)
 
 re: 		fclean all
 
-.PHONY:	clean fclean re all
+.PHONY:	clean fclean re all extra
